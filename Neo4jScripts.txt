@@ -1,0 +1,17 @@
+// Add Business Function to Bcf
+MATCH (n:BusinessCapabilityFramework{name:'Key Enabled Function'}) 
+create (online:Online{name:'Online'})
+create (n)-[:BusinessFunction]->(online)
+// Add Relationships
+Match (bcf:BusinessCapabilityFramework{name:'Business Capability Framework'})
+Match (kf:BusinessCapabilityFramework{name:'Key Enabled Function'})
+Match (sf:BusinessCapabilityFramework{name:'Simple Function'})
+Match (ef:BusinessCapabilityFramework{name:'Enablement Function'})
+create (bcf)-[:has]->(kf)
+create (bcf)-[:has]->(sf)
+create (bcf)-[:has]->(ef)
+// Create nodes
+create (bcf:BusinessCapabilityFramework{name:'Business Capability Framework'})
+create (kf:BusinessCapabilityFramework{name:'Key Enabled Function'})
+create (sf:BusinessCapabilityFramework{name:'Simple Function'})
+create (ef:BusinessCapabilityFramework{name:'Enablement Function'})

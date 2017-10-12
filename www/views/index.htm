@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <title>
+        BCF
+    </title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app.controller('myCtrl',function ($scope,$http) {
+        $scope.rows
+       $scope.Header='Business Capability Framework';
+        $http.get('http://localhost:8000/').then((resp)=>{
+            $scope.names=resp.data;
+        });
+        $scope.addNewFunction=function(busFun,name){
+                console.log(busFun.newFunc,name);
+        };
+    });
+</script>
+<body>
+<div ng-app="app">
+    <div ng-controller="myCtrl">
+        <h1 ng-bind="Header"></h1>
+        <div ng-repeat="name in names">
+            <p>{{name}}</p>
+         <label title="Add new Business Function"></label>
+         <div>
+             <input type="text" ng-model="busFun.newFunc"/>
+             <input type="button" ng-click="addNewFunction(busFun,name)" value="Add"/>
+         </div>
+        </div>
+    
+    </div>
+</div>
+</body>
+</html>
